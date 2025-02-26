@@ -7,9 +7,9 @@
             "actions": [
                 {
                     "name": "Move",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "351f2ccd-1f9f-44bf-9bec-d62ac5c5f408",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -90,6 +90,15 @@
                     "name": "Pushito",
                     "type": "Button",
                     "id": "1f0fa965-454d-4d6b-a933-d20bd7f73696",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DashPush",
+                    "type": "Button",
+                    "id": "61c58074-03ba-4676-9b8c-571992b8ef0d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Tap",
@@ -501,6 +510,28 @@
                     "processors": "",
                     "groups": ";Touch",
                     "action": "Pushito",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19328ba4-e4d4-41d0-a650-d27bc3dc2613",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "DashPush",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "31674fb5-b370-43f5-989d-3b5a685208ed",
+                    "path": "<Touchscreen>/touch1/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Touch",
+                    "action": "DashPush",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
