@@ -9,15 +9,16 @@ public class RacMovement : MonoBehaviour
     private InputAction clickAction;
     private InputAction dashAction;
     private bool isDashing;
+    private bool isFirstTime = true;
     [SerializeField] float jumpForce;
     [SerializeField] float speed;
     [SerializeField] float speedDash;
     [SerializeField] float limitMax;
     [SerializeField] float limitMin;
     [SerializeField] float timerDash;
+    [SerializeField] float maxVelocity = 0f;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         clickAction = InputSystem.actions.FindAction("pushito");
@@ -26,9 +27,16 @@ public class RacMovement : MonoBehaviour
         rb.AddForceX(speed);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if(isFirstTime)
+        {
+            maxVelocity = rb.linearVelocityX;
+            isFirstTime = false;
+            Debug.Log(maxVelocity);
+            return;
+        }
+
         if(!isDashing)
         {
             clickAction.performed += context => { rb.AddForceY(jumpForce); };
@@ -51,7 +59,8 @@ public class RacMovement : MonoBehaviour
             {
                 isDashing = false;
                 timerDash = 0.0f;
-                rb.AddForceX(-speedDash);
+                rb.linearVelocityX = maxVelocity;
+                //rb.AddForceX(-speedDash);
                 rb.gravityScale = 1.0f;
             }
         }
@@ -61,8 +70,10 @@ public class RacMovement : MonoBehaviour
     {
         rb.AddForceX(speedDash);
         rb.linearVelocityY = 0.0f;
+        rb.linearVelocityX = maxVelocity;
         isDashing = true;
         rb.gravityScale = 0.0f;
+        timerDash = 0.0f;
     }
 
 }
